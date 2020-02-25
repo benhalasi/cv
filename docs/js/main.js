@@ -90,4 +90,4 @@ let getRandomWaitTime = (interval) => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 };
 startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: " a Developer." });
-startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2" });
+startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "a developer." });

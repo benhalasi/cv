@@ -67,5 +67,5 @@ let getRandomWaitTime = (interval: Interval): number => {
 }
 
 startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: " a Developer."})
-startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2" })
+startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "a developer."})
 

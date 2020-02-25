@@ -10,11 +10,15 @@ $theme-colors: (
   "primary-dark": #b1bfca,
   "secondary": #81c784,
   "secondary-light": #b2fab4,
-  "secondary-dark": #519657
+  "secondary-dark": #519657,
+  "language": #b7ebd7,
+  "tool": #f0ebaf,
+  "os": #a1c3f5
 );
 
 $sizes: (
-  0: 0
+  0: 0,
+  20: 20%
 );
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
@@ -22,10 +26,16 @@ $sizes: (
 html,
 body {
   @extend .h-100;
+  scroll-behavior: smooth;
+  //scroll-snap-align: center, center;
 }
 
 section {
-  min-height: 75%;
+  @extend .container;
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .flex-column;
+  //@extend .py-5;
 }
 
 article {
@@ -35,4 +45,37 @@ article {
 
 article > h3 {
   @extend .m-0;
+}
+
+.mynav {
+  //max-height: 100vh;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  //height: fit-content;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+.minh-100 {
+  min-height: 100%;
+}
+
+.minh-50 {
+  min-height: 45%;
+}
+
+.skill-group-separator {
+  @extend .mx-2;
+}
+
+.small-paragraphs p {
+  @extend .mb-0;
+}
+
+.large-paragraph-content p {
+  font-size: large;
 }
