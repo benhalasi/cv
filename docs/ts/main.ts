@@ -1,3 +1,17 @@
+$(window).scroll(function () {
+    var scrollTop = $(document).scrollTop() + $(window).height() / 2;
+    var anchors = $('body').find('section');
+
+    for (var i = 0; i < anchors.length; i++) {
+        if (scrollTop > $(anchors[i]).offset().top && scrollTop < $(anchors[i]).offset().top + $(anchors[i]).height()) {
+            $('nav div div a[href="#' + $(anchors[i]).attr('id') + '"]').addClass('active');
+        } else {
+            $('nav div div a[href="#' + $(anchors[i]).attr('id') + '"]').removeClass('active');
+        }
+    }
+});
+
+
 let charPause: Interval = { from: 50, to: 150 }
 let enterPause: Interval = { from: 4000, to: 8000 }
 let removePause: Interval = { from: 1000, to: 4000 }
@@ -66,6 +80,6 @@ let getRandomWaitTime = (interval: Interval): number => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 }
 
-startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: " a Developer."})
-startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "a developer."})
+startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0})
+startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0})
 

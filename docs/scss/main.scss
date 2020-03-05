@@ -25,17 +25,15 @@ $sizes: (
 
 html,
 body {
-  @extend .h-100;
+  @extend .minh-100;
   scroll-behavior: smooth;
-  //scroll-snap-align: center, center;
+  scroll-snap-align: center, center;
 }
 
 section {
-  @extend .container;
   @extend .d-flex;
   @extend .justify-content-center;
   @extend .flex-column;
-  //@extend .py-5;
 }
 
 article {
@@ -47,25 +45,16 @@ article > h3 {
   @extend .m-0;
 }
 
-.mynav {
-  //max-height: 100vh;
-  position: sticky;
-  top: 0;
-  bottom: 0;
-  //height: fit-content;
-}
-
-.bottom {
-  position: fixed;
-  bottom: 0;
-}
-
 .minh-100 {
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .minh-50 {
-  min-height: 45%;
+  min-height: 50vh;
+}
+
+.minh-25 {
+  min-height: 30vh;
 }
 
 .skill-group-separator {
