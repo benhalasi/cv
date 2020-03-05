@@ -103,3 +103,4 @@ let getRandomWaitTime = (interval) => {
 };
 startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 });
 startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 });
+CSS.paintWorklet.addModule('js/paint.js');

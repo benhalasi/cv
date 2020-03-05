@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.3.33",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-cssnano": "^2.1.3",

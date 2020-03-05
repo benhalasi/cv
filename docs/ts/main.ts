@@ -1,3 +1,5 @@
+
+
 $(window).scroll(function () {
     var scrollTop = $(document).scrollTop() + $(window).height() / 2;
     var anchors = $('body').find('section');
@@ -80,6 +82,6 @@ let getRandomWaitTime = (interval: Interval): number => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 }
 
-startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0})
-startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0})
-
+startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
+startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 })
+CSS.paintWorklet.addModule('js/paint.js'); 

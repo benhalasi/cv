@@ -11,10 +11,14 @@ $theme-colors: (
   "secondary": #81c784,
   "secondary-light": #b2fab4,
   "secondary-dark": #519657,
+  "transparent-black": rgba(255, 255, 255, 0.96),
   "language": #b7ebd7,
   "tool": #f0ebaf,
   "os": #a1c3f5
 );
+
+$body-bg: rgba(0, 0, 0, 0);
+$jumbotron-bg: rgba(0, 0, 0, 0.2);
 
 $sizes: (
   0: 0,
@@ -38,7 +42,6 @@ section {
 
 article {
   @extend .mt-3;
-  @extend .col-md-8;
 }
 
 article > h3 {
@@ -57,6 +60,15 @@ article > h3 {
   min-height: 30vh;
 }
 
+.wrapper {
+  height: fit-content;
+  width: fit-content;
+  @extend .p-3;
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .col-md-8;
+  @extend .bg-secondary;
+}
 .skill-group-separator {
   @extend .mx-2;
 }
@@ -67,4 +79,10 @@ article > h3 {
 
 .large-paragraph-content p {
   font-size: large;
+}
+
+.painted-bg {
+  --bubble-size: 40;
+  --bubble-color: rgb(59, 128, 168);
+  background-image: paint(paintedBG);
 }
