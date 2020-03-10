@@ -19,7 +19,7 @@ gulp.task('ts', () => {
   return gulp.src('docs/ts/*.ts')
     .pipe(ts({
       target: 'ES6',
-      //outFile: 'main.js'
+      outFile: 'main.js'
     }))
     .pipe(gulp.dest('docs/js'))
     .pipe(browserSync.reload({

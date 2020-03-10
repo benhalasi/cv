@@ -1,16 +1,25 @@
+$('.viewport').scroll(function () {
+    let scrollTop = $(document).scrollTop() + $(window).height() / 2;
+    scrollTop *= 0.9
+    let anchors = $('body').find('section');
+
+    console.log("scroll", scrollTop)
+
+    let getPosition = (anchor: HTMLElement) => $(anchor).offset().top + $(anchor).height() / 2
+    let getDistance = (anchor: HTMLElement) => Math.abs(scrollTop - getPosition(anchor))
+
+    let nearestAnchor = anchors.get()
+        .reduce((nearestAnchor = anchors[1], otherAnchor) => (getDistance(nearestAnchor) < getDistance(otherAnchor) ? nearestAnchor : otherAnchor))
 
 
-$(window).scroll(function () {
-    var scrollTop = $(document).scrollTop() + $(window).height() / 2;
-    var anchors = $('body').find('section');
-
-    for (var i = 0; i < anchors.length; i++) {
-        if (scrollTop > $(anchors[i]).offset().top && scrollTop < $(anchors[i]).offset().top + $(anchors[i]).height()) {
-            $('nav div div a[href="#' + $(anchors[i]).attr('id') + '"]').addClass('active');
+    anchors.get().forEach(anchor => {
+        if (anchor == nearestAnchor) {
+            $('nav div div a[href="#' + $(anchor).attr('id') + '"]').addClass('active');
         } else {
-            $('nav div div a[href="#' + $(anchors[i]).attr('id') + '"]').removeClass('active');
+            $('nav div div a[href="#' + $(anchor).attr('id') + '"]').removeClass('active');
         }
-    }
+    })
+
 });
 
 
@@ -84,4 +93,3 @@ let getRandomWaitTime = (interval: Interval): number => {
 
 startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
 startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 })
-CSS.paintWorklet.addModule('js/paint.js'); 
