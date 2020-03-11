@@ -55,57 +55,67 @@ $('.viewport').scroll(function () {
     });
 });
 let charPause = { from: 50, to: 150 };
-let enterPause = { from: 4000, to: 8000 };
+let enterPause = { from: 1000, to: 1000 };
 let removePause = { from: 1000, to: 4000 };
-const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity }) => __awaiter(this, void 0, void 0, function* () {
-    let element = document.getElementById(textId);
-    let remainingChars = text.split(''); //.reverse();
-    let cursor = new Cursor(cursorId);
-    let enterText = () => {
-        return new Promise((resolver) => __awaiter(this, void 0, void 0, function* () {
-            while (remainingChars.length) {
-                yield enterChar(remainingChars.splice(0, 1)[0]);
-            }
-            setTimeout(resolver.bind(this), getRandomWaitTime(enterPause));
-        }));
-    };
-    let enterChar = (char) => {
-        return new Promise(resolver => {
-            element.innerText += char;
-            setTimeout(resolver.bind(this), getRandomWaitTime(charPause));
-            cursor.hasMovedHook();
-        });
-    };
-    let removeText = () => {
-        return new Promise((resolver) => __awaiter(this, void 0, void 0, function* () {
-            if (element.innerText.length) {
-                yield removeChar(400);
-            }
-            while (element.innerText.length) {
-                yield removeChar(40);
-            }
-            remainingChars.reverse();
-            setTimeout(resolver.bind(this), getRandomWaitTime(removePause));
-        }));
-    };
-    let removeChar = (waitTime = getRandomWaitTime(charPause)) => {
-        return new Promise(resolver => {
-            let innerText = element.innerText;
-            let length = innerText.length;
-            remainingChars.push(innerText.substring(length - 1, length));
-            element.innerText = element.innerText.substring(0, length - 1);
-            setTimeout(resolver.bind(this), waitTime);
-            cursor.hasMovedHook();
-        });
-    };
-    yield enterText();
-    while (repetitionNumber--) {
-        yield removeText();
+const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity }) => {
+    return new Promise((resolver) => __awaiter(this, void 0, void 0, function* () {
+        let element = document.getElementById(textId);
+        let remainingChars = text.split('');
+        let cursor = new Cursor(cursorId);
+        let enterText = () => {
+            return new Promise((resolver) => __awaiter(this, void 0, void 0, function* () {
+                while (remainingChars.length) {
+                    yield enterChar(remainingChars.splice(0, 1)[0]);
+                }
+                setTimeout(resolver.bind(this), getRandomWaitTime(enterPause));
+            }));
+        };
+        let enterChar = (char) => {
+            return new Promise(resolver => {
+                element.innerText += char;
+                setTimeout(resolver.bind(this), getRandomWaitTime(charPause));
+                cursor.hasMovedHook();
+            });
+        };
+        let removeText = () => {
+            return new Promise((resolver) => __awaiter(this, void 0, void 0, function* () {
+                if (element.innerText.length) {
+                    yield removeChar(400);
+                }
+                while (element.innerText.length) {
+                    yield removeChar(40);
+                }
+                remainingChars.reverse();
+                setTimeout(resolver.bind(this), getRandomWaitTime(removePause));
+            }));
+        };
+        let removeChar = (waitTime = getRandomWaitTime(charPause)) => {
+            return new Promise(resolver => {
+                let innerText = element.innerText;
+                let length = innerText.length;
+                remainingChars.push(innerText.substring(length - 1, length));
+                element.innerText = element.innerText.substring(0, length - 1);
+                setTimeout(resolver.bind(this), waitTime);
+                cursor.hasMovedHook();
+            });
+        };
+        console.log("resolve1");
         yield enterText();
-    }
-});
+        console.log("resolver2");
+        while (repetitionNumber--) {
+            console.log("rep");
+            yield removeText();
+            yield enterText();
+        }
+        console.log("resolve3");
+        resolver();
+    }));
+};
 let getRandomWaitTime = (interval) => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 };
-startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 });
+startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
+    .finally(() => {
+    document.getElementById("top").scrollIntoView();
+});
 startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 });

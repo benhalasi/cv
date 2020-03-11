@@ -48,18 +48,18 @@ body {
 
 .background-jumbotron {
   //clip-path: polygon(5% 10%, 5% 25%, 95% 25%, 95% 10%);
-  clip-path: polygon(0% 0%, 0% 25%, 100% 35%, 100% 0%);
-  background-color: rgba(23, 71, 23, 0.4);
+  clip-path: polygon(0% 0%, 0% 20%, 100% 30%, 100% 0%);
+  background-color: rgba(30, 100, 30, 0.5);
 }
 
 .background-1 {
-  clip-path: polygon(0 75%, 100% 50%, 100% 20%, 0 60%);
-  background-color: rgba(0, 0, 0, 0.4);
+  clip-path: polygon(0 75%, 100% 50%, 100% 25%, 0 60%);
+  background-color: rgba(90, 132, 90, 0.5);
 }
 
 .background-2 {
   clip-path: polygon(100% 60%, 0 45%, 0 30%, 100% 55%);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(100, 120, 100, 0.5);
 }
 
 .jumbotron {
@@ -105,13 +105,13 @@ article > h3 {
 
 .wrapper {
   height: fit-content;
-  width: fit-content;
   @extend .p-3;
   @extend .d-flex;
   @extend .flex-column;
   @extend .col-md-8;
   @extend .front;
   @extend .bg-transparent-white-06;
+  //@extend .w-100;
 }
 
 .front {
