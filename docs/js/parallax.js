@@ -71,7 +71,6 @@ function initializeParallax(clip) {
         for (var i = 0; i < parallaxDetails.length; i++) {
 
             var container = parallaxDetails[i].node.parentNode;
-            console.log(container, parallaxDetails[i])
             var previousCover = parallaxDetails[i].previousCover;
             var nextCover = parallaxDetails[i].nextCover;
             var parallaxStart = previousCover ? (previousCover.offsetTop + previousCover.offsetHeight) : 0;

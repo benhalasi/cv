@@ -8333,7 +8333,15 @@ body {
   margin: 0;
   overflow: hidden;
   scroll-behavior: smooth;
-  scroll-snap-align: center, center; }
+  scroll-snap-align: center center; }
+
+.viewport {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth; }
 
 .parallax {
   background-size: cover;
@@ -8357,24 +8365,22 @@ body {
   clip-path: polygon(100% 60%, 0 45%, 0 30%, 100% 55%);
   background-color: rgba(100, 120, 100, 0.5); }
 
-.viewport {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth; }
-
 section {
   z-index: 10; }
 
 .minh-100 {
   min-height: 100vh; }
 
+.minh-75 {
+  min-height: 70vh; }
+
 .minh-50 {
   min-height: 50vh; }
 
 .minh-25 {
+  min-height: 30vh; }
+
+.minh-10 {
   min-height: 30vh; }
 
 .wrapper {

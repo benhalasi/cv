@@ -32,7 +32,16 @@ body {
   margin: 0;
   overflow: hidden;
   scroll-behavior: smooth;
-  scroll-snap-align: center, center;
+  scroll-snap-align: center center;
+}
+
+.viewport {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 .parallax {
@@ -67,15 +76,6 @@ body {
   @extend .front;
 }
 
-.viewport {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
 section {
   @extend .d-flex;
   @extend .justify-content-center;
@@ -95,11 +95,19 @@ article > h3 {
   min-height: 100vh;
 }
 
+.minh-75 {
+  min-height: 70vh;
+}
+
 .minh-50 {
   min-height: 50vh;
 }
 
 .minh-25 {
+  min-height: 30vh;
+}
+
+.minh-10 {
   min-height: 30vh;
 }
 

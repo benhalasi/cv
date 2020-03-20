@@ -3,14 +3,20 @@ $('.viewport').scroll(function () {
     scrollTop *= 0.9
     let anchors = $('body').find('section');
 
-    console.log("scroll", scrollTop)
-
     let getPosition = (anchor: HTMLElement) => $(anchor).offset().top + $(anchor).height() / 2
     let getDistance = (anchor: HTMLElement) => Math.abs(scrollTop - getPosition(anchor))
 
     let nearestAnchor = anchors.get()
         .reduce((nearestAnchor = anchors[1], otherAnchor) => (getDistance(nearestAnchor) < getDistance(otherAnchor) ? nearestAnchor : otherAnchor))
 
+
+    let elementTop = $("#landing").offset().top;
+    let elementBottom = elementTop + $("#landing").outerHeight();
+    let viewportTop = $(window).scrollTop();
+    if(elementBottom <= viewportTop){
+        $("#landing").removeClass("d-flex");
+        $("#landing").addClass("d-none");
+    }
 
     anchors.get().forEach(anchor => {
         if (anchor == nearestAnchor) {
@@ -22,12 +28,16 @@ $('.viewport').scroll(function () {
 
 });
 
+$.fn.isInViewport = function () {
+
+};
+
 
 let charPause: Interval = { from: 50, to: 150 }
 let enterPause: Interval = { from: 1000, to: 1000 }
 let removePause: Interval = { from: 1000, to: 4000 }
 
-const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity }: { textId: string; cursorId: string; text?: string; repetitionNumber?: number; }) => {
+const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity }: { textId: string; cursorId: string; text?: string; repetitionNumber?: number; }): Promise<void> => {
     return new Promise(async resolver => {
         let element = document.getElementById(textId);
         let remainingChars = text.split('')
@@ -80,16 +90,12 @@ const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity 
             });
         }
 
-        console.log("resolve1");
         await enterText()
-        console.log("resolver2");
         while (repetitionNumber--) {
-            console.log("rep")
             await removeText()
             await enterText()
         }
 
-        console.log("resolve3");
         resolver();
     })
 }
@@ -99,7 +105,7 @@ let getRandomWaitTime = (interval: Interval): number => {
 }
 
 startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
-    .finally(() => {
+    .then(() => {
         document.getElementById("top").scrollIntoView();
     })
 startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 })

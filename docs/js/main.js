@@ -40,11 +40,17 @@ $('.viewport').scroll(function () {
     let scrollTop = $(document).scrollTop() + $(window).height() / 2;
     scrollTop *= 0.9;
     let anchors = $('body').find('section');
-    console.log("scroll", scrollTop);
     let getPosition = (anchor) => $(anchor).offset().top + $(anchor).height() / 2;
     let getDistance = (anchor) => Math.abs(scrollTop - getPosition(anchor));
     let nearestAnchor = anchors.get()
         .reduce((nearestAnchor = anchors[1], otherAnchor) => (getDistance(nearestAnchor) < getDistance(otherAnchor) ? nearestAnchor : otherAnchor));
+    let elementTop = $("#landing").offset().top;
+    let elementBottom = elementTop + $("#landing").outerHeight();
+    let viewportTop = $(window).scrollTop();
+    if (elementBottom <= viewportTop) {
+        $("#landing").removeClass("d-flex");
+        $("#landing").addClass("d-none");
+    }
     anchors.get().forEach(anchor => {
         if (anchor == nearestAnchor) {
             $('nav div div a[href="#' + $(anchor).attr('id') + '"]').addClass('active');
@@ -54,6 +60,8 @@ $('.viewport').scroll(function () {
         }
     });
 });
+$.fn.isInViewport = function () {
+};
 let charPause = { from: 50, to: 150 };
 let enterPause = { from: 1000, to: 1000 };
 let removePause = { from: 1000, to: 4000 };
@@ -99,15 +107,11 @@ const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity 
                 cursor.hasMovedHook();
             });
         };
-        console.log("resolve1");
         yield enterText();
-        console.log("resolver2");
         while (repetitionNumber--) {
-            console.log("rep");
             yield removeText();
             yield enterText();
         }
-        console.log("resolve3");
         resolver();
     }));
 };
@@ -115,7 +119,7 @@ let getRandomWaitTime = (interval) => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 };
 startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
-    .finally(() => {
+    .then(() => {
     document.getElementById("top").scrollIntoView();
 });
 startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 });
