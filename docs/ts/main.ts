@@ -28,10 +28,6 @@ $('.viewport').scroll(function () {
 
 });
 
-$.fn.isInViewport = function () {
-
-};
-
 
 let charPause: Interval = { from: 50, to: 150 }
 let enterPause: Interval = { from: 1000, to: 1000 }

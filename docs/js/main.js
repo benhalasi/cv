@@ -60,8 +60,6 @@ $('.viewport').scroll(function () {
         }
     });
 });
-$.fn.isInViewport = function () {
-};
 let charPause = { from: 50, to: 150 };
 let enterPause = { from: 1000, to: 1000 };
 let removePause = { from: 1000, to: 4000 };
