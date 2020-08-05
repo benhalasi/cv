@@ -13,6 +13,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       initializeParallax(document.querySelector('.viewport'));
+      $('[data-toggle="tooltip"]').tooltip()
     });
   </script>
 
@@ -47,11 +48,11 @@
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <div class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <a class="nav-link" href="#experiences">experiences</a>
           <a class="nav-link" href="#skills">skills</a>
-          <a class="nav-link" href="#studies">studies</a>
+          <a class="nav-link" href="#projects">projects</a>
+          <a class="nav-link" href="#experiences">experiences</a>
           <a class="nav-link" href="#languages">languages</a>
-          <a class="nav-link" href="#achievements">achievements</a>
+          <a class="nav-link" href="#studies">studies</a>
           <a class="nav-link" href="#about">about</a>
           <a class="nav-link" href="misc/benedek_halasi_cv_en.pdf" target="_blank">pdf</a>
         </div>
@@ -76,7 +77,7 @@
                 </div>
               </div>
               <div class="d-inline-block pl-1 float-right">
-                <p class="lead text-monospace d-none">Junior Java Developer.</p>
+                <p class="lead text-monospace">Junior Java Developer.</p>
               </div>
             </div>
             <div class="d-none d-md-block d-md-block col-md-4 col-lg-3 align-self-end">
@@ -87,7 +88,113 @@
       </div>
     </div>
 
-    <div class="minh-10"></div>
+    <div>
+      <div class="parallax overflow-hidden background-1" parallax="0.6"></div>
+    </div>
+
+    <div>
+      <div></div>
+      <section id="skills" class="container minh-100 small-paragraphs large-paragraph-content">
+        <div class="wrapper">
+          <h2>Familiar Technologies & Concepts</h2>
+          <article>
+            <h5>Back-end</h5>
+            <p>
+              <span class="badge badge-pill badge-language" data-toggle="tooltip" data-placement="top"
+                title="Java SE 8+">Java</span>
+              <span class="badge badge-pill badge-language">SQL</span>
+              <span class="badge badge-pill badge-concept">Microservices</span>
+              <span class="badge badge-pill badge-concept">REST</span>
+            </p>
+            <small>Frameworks & Tools</small>
+            <p>
+              <span class="badge badge-pill badge-tool">Eclipse</span>
+              <span class="badge badge-pill badge-framework">Spring</span>
+              <span class="badge badge-pill badge-tool">Maven</span>
+              <span class="badge badge-pill badge-tool">Lombok</span>
+            </p>
+            <small>QA</small>
+            <p>
+              <span class="badge badge-pill badge-framework">JUnit 5</span>
+              <span class="badge badge-pill badge-framework">Mockito</span>
+              <span class="badge badge-pill badge-tool">EMMA</span>
+            </p>
+          </article>
+
+          <article>
+            <h5>Front-end</h5>
+            <small>Technologies</small>
+            <p>
+              <span class="badge badge-pill badge-language">HTML5</span>
+              <span class="badge badge-pill badge-language">JavaScript</span>
+              <span class="badge badge-pill badge-language">TypeScript</span>
+              <span class="badge badge-pill badge-language">Css</span>
+              <span class="badge badge-pill badge-language">Scss</span>
+            </p>
+            <small>Frameworks</small>
+            <p>
+              <span class="badge badge-pill badge-framework">Angular 2+</span>
+              <span class="badge badge-pill badge-framework">Bootstrap</span>
+            </p>
+            <small>Enviroments & Tools</small>
+            <p>
+              <span class="badge badge-pill badge-framework">Node.js</span>
+              <span class="badge badge-pill badge-tool">Gulp</span>
+            </p>
+          </article>
+
+          <article>
+            <h5>DevOps</h5>
+            <small>CI/CD</small>
+            <p>
+              <span class="badge badge-pill badge-tool">Git</span>
+              <span class="badge badge-pill badge-tool">Maven</span>
+              <span class="badge badge-pill badge-tool">Jenkins</span>
+            </p>
+            <small>Container Orchestration</small>
+            <p>
+              <span class="badge badge-pill badge-tool">Docker</span>
+              <span class="badge badge-pill badge-tool">Kubernetes</span>
+            </p>
+            <small>Tools</small>
+            <p>
+              <span class="badge badge-pill badge-tool">Kustomize</span>
+              <span class="badge badge-pill badge-tool">Skaffold</span>
+              <span class="badge badge-pill badge-tool">Google Jib</span>
+              <span class="badge badge-pill badge-tool">Prometheus</span>
+            </p>
+          </article>
+      </section>
+    </div>
+
+    <div>
+      <div class="parallax overflow-hidden background-2" parallax="0.4"></div>
+      <section id="projects" class="container minh-75 align-items-md-end">
+        <div class="wrapper">
+          <h2>Projects</h2>
+          <article>
+            <p>
+              <strong>ReBoarding</strong> - Example application to try-out and learn microservice-architecture
+              <a class="btn btn-secondary btn-sm p-1 ml-2" href="#" role="button">GitLab</a>
+            </p>
+            <p>
+              <strong>Website Template</strong> - Lightweight HTML5 template preconfigured with bootstrap, scss, ts, and
+              gulp for automatic compilation and browser-reload
+              <a class="btn btn-secondary btn-sm p-1 ml-2" href="#" role="button">GitHub</a>
+            </p>
+            <p>
+              <strong>CV</strong> - This site on github with some additional features like paralax scrolling
+              <a class="btn btn-secondary btn-sm p-1 ml-2" href="#" role="button">GitHub</a>
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div>
+      <div class="parallax overflow-hidden background-3" parallax="0.2"></div>
+    </div>
+
     <section id="experiences" class="container minh-75">
       <div class="wrapper">
         <h2>Experiences</h2>
@@ -117,56 +224,21 @@
       </div>
     </section>
 
-    <div>
-      <div class="parallax overflow-hidden background-1" parallax="0.4"></div>
-      <section id="skills" class="container minh-75 small-paragraphs large-paragraph-content align-items-md-end">
-        <div class="wrapper">
-          <h2>Programming Skills</h2>
-          <article>
-            <small>Advanced</small>
-            <p>
-              <span class="badge badge-pill badge-language">Java</span>
-              <span class="badge badge-pill badge-tool">Maven</span>
-              <span class="badge badge-pill badge-tool">Spring</span>
+    <section id="languages" class="container minh-50 align-items-md-end">
+      <div class="wrapper">
+        <h2>Languages</h2>
+        <article>
+          <p>
+            <strong>Hungarian</strong> - Native
+          </p>
+          <p>
+            <strong>English</strong> - Intermediate
+          </p>
+        </article>
+      </div>
+    </section>
 
-              <span class="skill-group-separator"></span>
-              <span class="badge badge-pill badge-language">HTML5</span>
-              <span class="badge badge-pill badge-language">JavaScript</span>
-              <span class="badge badge-pill badge-language">TypeScript</span>
-              <span class="badge badge-pill badge-language">Css</span>
-              <span class="badge badge-pill badge-language">Scss</span>
-              <span class="badge badge-pill badge-tool">Node.js</span>
-
-              <span class="skill-group-separator"></span>
-              <span class="badge badge-pill badge-tool">Git</span>
-              <span class="badge badge-pill badge-tool">CI/CD</span>
-              <span class="badge badge-pill badge-os">Linux</span>
-            </p>
-          </article>
-
-          <article>
-            <small>Intermediate</small>
-            <p>
-              <span class="badge badge-pill badge-language">C</span>
-              <span class="badge badge-pill badge-language">C++</span>
-
-              <span class="skill-group-separator"></span>
-              <span class="badge badge-pill badge-language">SQL</span>
-              <span class="badge badge-pill badge-tool">Jenkins</span>
-            </p>
-          </article>
-
-          <article>
-            <small>Beginner</small>
-            <p>
-              <span class="badge badge-pill badge-language">Angular</span>
-              <span class="badge badge-pill badge-language">Python</span>
-            </p>
-          </article>
-      </section>
-    </div>
-
-    <section id="studies" class="container minh-75">
+    <section id="studies" class="container minh-50">
       <div class="wrapper">
         <h2>Studies</h2>
         <article>
@@ -182,52 +254,21 @@
       </div>
     </section>
 
-    <section id="languages" class="container minh-50 align-items-md-end">
-      <div class="wrapper">
-        <h2>Languages</h2>
-        <article>
-          <p>
-            <strong>Hungarian</strong> - Native
-          </p>
-          <p>
-            <strong>English</strong> - Intermediate
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <div>
-      <div class="parallax overflow-hidden background-2" parallax="0.3"></div>
-      <section id="achievements" class="container minh-50">
-        <div class="wrapper">
-          <h2>Achievements</h2>
-          <article>
-            <p>
-              <strong>MIRK (Magyar Ifjúsági Robot Kupa)</strong> - 2016. Beginner category - 3. place
-            </p>
-            <p>
-              <strong>OKTV - 2017/18. Informatics</strong> - second round
-            </p>
-          </article>
-        </div>
-      </section>
-    </div>
-
     <section id="about" class="container minh-50 align-items-md-end">
       <div class="wrapper">
         <h2>About me</h2>
         <article>
           <p>
-            As I wrote before, I've just finished a java training program so I would be happy to move forward in this path, to develop my skills accordingly, and be a part of a team.
+            As I wrote before, I've just finished a java training program so I would be happy to move forward in this
+            path, to develop my skills accordingly, and be a part of a team.
           </p>
           <p>
-            When I'm not programming I'm just doing casusal stuff, playing piano, trying to make music or just go-karting with my friends.
+            When I'm not programming I'm just doing casusal stuff, playing piano, trying to make music or just
+            go-karting with my friends.
           </p>
         </article>
       </div>
     </section>
-
-    <div class="minh-25"></div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

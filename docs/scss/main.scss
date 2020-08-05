@@ -15,8 +15,9 @@ $theme-colors: (
   "transparent-white-04": rgba(180, 180, 180, 0.4),
   "transparent-white-06": rgba(180, 180, 180, 0.6),
   "language": #b7ebd7,
+  "concept": #b7d4eb,
+  "framework": #a1c3f5,
   "tool": #f0ebaf,
-  "os": #a1c3f5
 );
 
 $sizes: (
@@ -55,20 +56,33 @@ body {
   margin-bottom: -130vh;
 }
 
+.z-background {
+  z-index: -1;
+}
+
 .background-jumbotron {
   //clip-path: polygon(5% 10%, 5% 25%, 95% 25%, 95% 10%);
   clip-path: polygon(0% 0%, 0% 20%, 100% 30%, 100% 0%);
   background-color: rgba(30, 100, 30, 0.5);
+  z-index: -1;
 }
 
 .background-1 {
   clip-path: polygon(0 75%, 100% 50%, 100% 25%, 0 60%);
   background-color: rgba(90, 132, 90, 0.5);
+  z-index: -1;
 }
 
 .background-2 {
   clip-path: polygon(100% 60%, 0 45%, 0 30%, 100% 55%);
   background-color: rgba(100, 120, 100, 0.5);
+  z-index: -1;
+}
+
+.background-3 {
+  clip-path: polygon(100% 66%, 100% 75%, 0 100%, 0 90%);
+  background-color: rgba(127, 165, 127, 0.3);
+  z-index: -1;
 }
 
 .jumbotron {
