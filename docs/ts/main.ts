@@ -13,9 +13,14 @@ $('.viewport').scroll(function () {
     let elementTop = $("#landing").offset().top;
     let elementBottom = elementTop + $("#landing").outerHeight();
     let viewportTop = $(window).scrollTop();
-    if(elementBottom <= viewportTop){
+    if (elementBottom <= viewportTop && $("#landing").hasClass("d-flex")) {
         $("#landing").removeClass("d-flex");
-        $("#landing").addClass("d-none");
+        setTimeout(() => {
+            console.log("scroll back")
+            $("#landing").addClass("d-none");
+            document.getElementById("top").scroll({behavior: "smooth"})
+            //document.getElementById("top").scrollIntoView(false);
+        }, 100)
     }
 
     anchors.get().forEach(anchor => {
@@ -100,8 +105,8 @@ let getRandomWaitTime = (interval: Interval): number => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 }
 
-startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
+startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "", repetitionNumber: 0 })
     .then(() => {
-        document.getElementById("top").scrollIntoView();
+        document.getElementById("top").scrollIntoView({behavior: "smooth"});
     })
 startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 })
