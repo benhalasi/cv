@@ -22,7 +22,7 @@ $theme-colors: (
 
 $sizes: (
   0: 0,
-  20: 20%
+  20: 20%,
 );
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
@@ -32,8 +32,6 @@ body {
   @extend .h-100;
   margin: 0;
   overflow: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-align: center center;
 }
 
 .viewport {
@@ -41,7 +39,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
-  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
   scroll-behavior: smooth;
 }
 
@@ -56,33 +54,25 @@ body {
   margin-bottom: -130vh;
 }
 
-.z-background {
-  z-index: -1;
-}
-
 .background-jumbotron {
   //clip-path: polygon(5% 10%, 5% 25%, 95% 25%, 95% 10%);
   clip-path: polygon(0% 0%, 0% 20%, 100% 30%, 100% 0%);
   background-color: rgba(30, 100, 30, 0.5);
-  z-index: -1;
 }
 
 .background-1 {
   clip-path: polygon(0 75%, 100% 50%, 100% 25%, 0 60%);
   background-color: rgba(90, 132, 90, 0.5);
-  z-index: -1;
 }
 
 .background-2 {
   clip-path: polygon(100% 60%, 0 45%, 0 30%, 100% 55%);
   background-color: rgba(100, 120, 100, 0.5);
-  z-index: -1;
 }
 
 .background-3 {
   clip-path: polygon(100% 66%, 100% 75%, 0 100%, 0 90%);
   background-color: rgba(127, 165, 127, 0.3);
-  z-index: -1;
 }
 
 .jumbotron {
@@ -150,4 +140,15 @@ article > h3 {
 
 .large-paragraph-content p {
   font-size: large;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  overscroll-behavior-x: none;
+  z-index: 10001;
 }

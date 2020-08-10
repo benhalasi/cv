@@ -1,4 +1,4 @@
-class Cursor {
+export class Cursor {
     private element: HTMLElement
     private blinkTime: number = 1000
     private blinkerInterval

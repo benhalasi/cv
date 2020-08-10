@@ -1,4 +1,7 @@
-$('.viewport').scroll(function () {
+import { Cursor } from "./Cursor"
+import { Interval } from "./Interval"
+
+$('.viewport').scroll(() => {
     let scrollTop = $(document).scrollTop() + $(window).height() / 2;
     scrollTop *= 0.9
     let anchors = $('body').find('section');
@@ -8,20 +11,6 @@ $('.viewport').scroll(function () {
 
     let nearestAnchor = anchors.get()
         .reduce((nearestAnchor = anchors[1], otherAnchor) => (getDistance(nearestAnchor) < getDistance(otherAnchor) ? nearestAnchor : otherAnchor))
-
-
-    let elementTop = $("#landing").offset().top;
-    let elementBottom = elementTop + $("#landing").outerHeight();
-    let viewportTop = $(window).scrollTop();
-    if (elementBottom <= viewportTop && $("#landing").hasClass("d-flex")) {
-        $("#landing").removeClass("d-flex");
-        setTimeout(() => {
-            console.log("scroll back")
-            $("#landing").addClass("d-none");
-            document.getElementById("top").scroll({behavior: "smooth"})
-            //document.getElementById("top").scrollIntoView(false);
-        }, 100)
-    }
 
     anchors.get().forEach(anchor => {
         if (anchor == nearestAnchor) {
@@ -35,7 +24,7 @@ $('.viewport').scroll(function () {
 
 
 let charPause: Interval = { from: 50, to: 150 }
-let enterPause: Interval = { from: 1000, to: 1000 }
+let enterPause: Interval = { from: 200, to: 200 }
 let removePause: Interval = { from: 1000, to: 4000 }
 
 const startTyping = ({ textId, cursorId, text = "", repetitionNumber = Infinity }: { textId: string; cursorId: string; text?: string; repetitionNumber?: number; }): Promise<void> => {
@@ -105,8 +94,10 @@ let getRandomWaitTime = (interval: Interval): number => {
     return Math.random() * (interval.to - interval.from) + interval.from;
 }
 
-startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "", repetitionNumber: 0 })
+$(startTyping({ textId: "dev_text", cursorId: "dev_cursor", text: "I'm Benedek.", repetitionNumber: 0 })
     .then(() => {
-        document.getElementById("top").scrollIntoView({behavior: "smooth"});
-    })
-startTyping({ textId: "dev_text_2", cursorId: "dev_cursor_2", text: "", repetitionNumber: 0 })
+        $('#overlay').animate({
+            height: '0%'
+        }, 800)
+    }))
+

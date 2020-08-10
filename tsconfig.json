@@ -1,0 +1,15 @@
+{
+    "include": [
+        "src/ts/*.ts"
+    ],
+    "compilerOptions": {
+        "target": "ES5",
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    }
+}
