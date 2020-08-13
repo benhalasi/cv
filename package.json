@@ -1,7 +1,7 @@
 {
   "name": "benedek-halasi-cv",
   "version": "1.0.0",
-  "description": "",
+  "description": ".",
   "main": "npm start",
   "devDependencies": {
     "@types/jquery": "^3.5.1",
