@@ -29,7 +29,7 @@ staticResourcePaths.forEach(res =>
 
 )
 
-gulp.task('static_resources', gulp.parallel(
+gulp.task('statics', gulp.parallel(
   staticResourcePaths.map(res => res.from)
 ))
 
@@ -98,7 +98,7 @@ gulp.task('js', () =>
 )
 
 gulp.task('build', gulp.parallel(
-  'static_resources',
+  'statics',
   'bootstrap',
   'jquery',
   'sass',
