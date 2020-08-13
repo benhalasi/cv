@@ -7,10 +7,11 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const tsify = require('tsify');
 
+const browserSync = require('browser-sync').create()
+
+
 const src = 'src/'
 const dist = 'docs/'
-
-const browserSync = require('browser-sync').create()
 
 const staticResourcePaths = [
   { from: src + '*.html', to: dist },
@@ -26,12 +27,12 @@ staticResourcePaths.forEach(res =>
         stream: true
       }))
   )
-
 )
 
 gulp.task('statics', gulp.parallel(
   staticResourcePaths.map(res => res.from)
 ))
+
 
 gulp.task('jquery', () =>
   gulp.src('node_modules/jquery/dist/jquery.min.js')
@@ -51,6 +52,7 @@ gulp.task('bootstrap', () =>
     }))
 );
 
+
 gulp.task('sass', () =>
   gulp.src(src + 'scss/main.scss')
     .pipe(sass())
@@ -59,6 +61,7 @@ gulp.task('sass', () =>
       stream: true
     }))
 );
+
 
 gulp.task('ts', () =>
   browserify({
@@ -85,6 +88,7 @@ gulp.task('ts', () =>
     }))
 )
 
+
 gulp.task('js', () =>
   gulp.src(src + 'js/*.js')
     .pipe(buffer())
@@ -97,6 +101,7 @@ gulp.task('js', () =>
     }))
 )
 
+
 gulp.task('build', gulp.parallel(
   'statics',
   'bootstrap',
@@ -105,6 +110,7 @@ gulp.task('build', gulp.parallel(
   'ts',
   'js'
 ))
+
 
 gulp.task('watch', gulp.series('build', () => {
   browserSync.init({
@@ -119,5 +125,6 @@ gulp.task('watch', gulp.series('build', () => {
     gulp.watch(res.from).on('change', gulp.task(res.from))
   )
 }))
+
 
 gulp.task('default', gulp.series('watch'))
