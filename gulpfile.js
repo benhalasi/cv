@@ -12,15 +12,13 @@ const dist = 'docs/'
 
 const browserSync = require('browser-sync').create()
 
-const paths = {
-  resources: [
-    { from: src + '*.html', to: dist },
-    { from: src + 'misc/*', to: dist + 'misc' },
-    { from: src + 'imgs/*', to: dist + 'imgs' }
-  ]
-};
+const staticResourcePaths = [
+  { from: src + '*.html', to: dist },
+  { from: src + 'misc/*', to: dist + 'misc' },
+  { from: src + 'imgs/*', to: dist + 'imgs' }
+];
 
-paths.resources.forEach(res =>
+staticResourcePaths.forEach(res =>
   gulp.task(res.from, () =>
     gulp.src(res.from)
       .pipe(gulp.dest(res.to))
@@ -31,8 +29,8 @@ paths.resources.forEach(res =>
 
 )
 
-gulp.task('resources', gulp.parallel(
-  paths.resources.map(res => res.from)
+gulp.task('static_resources', gulp.parallel(
+  staticResourcePaths.map(res => res.from)
 ))
 
 gulp.task('jquery', () =>
@@ -82,7 +80,7 @@ gulp.task('ts', () =>
     .pipe(uglify())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dist + 'js'))
-    .pipe(browserSync.reload({  
+    .pipe(browserSync.reload({
       stream: true
     }))
 )
@@ -100,7 +98,7 @@ gulp.task('js', () =>
 )
 
 gulp.task('build', gulp.parallel(
-  'resources',
+  'static_resources',
   'bootstrap',
   'jquery',
   'sass',
@@ -117,7 +115,7 @@ gulp.task('watch', gulp.series('build', () => {
 
   gulp.watch(src + 'scss/*.scss').on('change', gulp.task('sass'))
   gulp.watch(src + 'ts/*.ts').on('change', gulp.task('ts'))
-  paths.resources.forEach(res =>
+  staticResourcePaths.forEach(res =>
     gulp.watch(res.from).on('change', gulp.task(res.from))
   )
 }))
